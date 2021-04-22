@@ -1,0 +1,22 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+clear
+
+if ![[ -f $PATH/figlet ]]
+then
+	pkg update && pkg upgrade -y
+	pkg install figlet
+fi
+
+clear
+
+printf "\e[31m"
+figlet -f smslant "Termux Copy"
+printf "\e[0m"
+
+cp dist/copy $PATH
+
+if [[ -f $PATH/copy ]]
+then
+	printf "\e[32mSuccessfully installed.\e[0m\nNow you can copy file content to your clipboard by typing:\e[1;32mcopy <file>"
+fi
